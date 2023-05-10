@@ -1,0 +1,4 @@
+.main_bread_div {
+    display: flex;
+    flex-wrap: wrap;
+}

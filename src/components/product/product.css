@@ -1,0 +1,26 @@
+.bread_card {
+    display: flex;
+    width: 450px;
+}
+
+.bread_img {
+    width: 200px;
+}
+
+.bread_info {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+.card_revers {
+    flex-direction: row-reverse;
+}
+
+.bread_price {
+    font-size: larger;
+}
+
+.bread_title {
+    font-size: large;
+}
