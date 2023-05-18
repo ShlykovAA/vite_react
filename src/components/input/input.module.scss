@@ -1,0 +1,20 @@
+.input_box {
+    width: 258px;
+    height: 31px;
+    position: relative;
+    margin: 20px;
+}
+
+.input_style {
+    width: 250px;
+    height: 25px;
+    border-radius: 10px;
+    border-color: #1a1a1a;
+    background-color: #1a1a1a;
+}
+
+label {
+    position: absolute;
+    top: -25px;
+    left: 10px;
+}

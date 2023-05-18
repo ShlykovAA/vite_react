@@ -11,7 +11,9 @@ export const ProductDescription: React.FC<IProductDescription> = ({ children }) 
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            width: "270px",
+            width: "280px",
+            height: "280px",
+            alignContent: "space-between",
         }}>
             {children}
         </div>
