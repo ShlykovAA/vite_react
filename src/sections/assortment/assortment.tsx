@@ -34,7 +34,7 @@ const config: IProduct[] = [
 export const Assortment = () => {
     return (
         <div className={styles.main_bread_div}>
-            {/* {config.map((item)=> (<Product {...item}/>))} */}
+            {/* {config.map((item, index) => ())} */}
         </div>
     )
 };
