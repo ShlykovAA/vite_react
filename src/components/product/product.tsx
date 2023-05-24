@@ -25,11 +25,11 @@ const transformText = (str: string) => {
 }
 
 export const Product: FC<Partial<IProduct>> = ({children, description, price, src, title}) => {
-    const [lightTheme, setLightTheme] = useState<boolean>();
+    // const [lightTheme, setLightTheme] = useState<boolean>();
     // const [product, setProduct] = useState<any>();
 
-    let calc = 1;
-    calc = Math.random();
+    // let calc = 1;
+    // calc = Math.random();
 
     // useEffect(()=>{
     //     const loadProduct = async () => {
@@ -41,9 +41,9 @@ export const Product: FC<Partial<IProduct>> = ({children, description, price, sr
     //     loadProduct();
     // },[lightTheme]);
 
-    const onClick = () => {
-        setLightTheme((prevState) => !prevState);
-    }
+    // const onClick = () => {
+    //     setLightTheme((prevState) => !prevState);
+    // }
 
     return (
         <div className={styles.bread_card}>
@@ -52,15 +52,15 @@ export const Product: FC<Partial<IProduct>> = ({children, description, price, sr
             </div>
             <div className={styles.control}>
                 <ProductDescription>
-                    {true ? (
-                        <>
+                    {/* {true ? (
+                        <> */}
                             <h4 className={styles.bread_title}>{title}</h4>
                             <p>{description}</p>
                             <h5 className={styles.bread_price}>$ {price}</h5>
-                        </>
+                        {/* </>
                     ) : (
                         <p>Loading....</p>
-                    )}
+                    )} */}
                 </ProductDescription>
             </div>
         </div>
