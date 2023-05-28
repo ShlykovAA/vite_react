@@ -57,8 +57,8 @@ const config: IProduct[] = [
 // }
 
 export const Assortment = () => {
-    // // const products = useFetchProducts();
-    // // console.log(products)
+    // const products = useFetchProducts();
+    // console.log(products)
     // return (
     //     <div className={styles.main_bread_div}>
     //         {products?.map((product:any) => {
