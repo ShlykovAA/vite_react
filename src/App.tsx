@@ -6,27 +6,7 @@ import './App.css'
 import { Search } from './sections/search';
 import { ThemeProvider } from './providers/theme-provider';
 import {ThemeButton} from "./components/button-theme"
-
-interface IMeBu {
-  onClick: (arg: any)=> void;
-}
-const MemoButton:React.FC<IMeBu> = ({onClick}) => {
-  console.log("Render")
-  return (<button onClick={onClick}>Click Me</button>)
-};
-const ButtonMemo = React.memo(MemoButton)
-
-export const Counter = () => {
-  const [count, setCount] = useState(0)
-  const onClick = React.useCallback(() => {
-    setCount((prevState) => prevState + 1);
-  },[])
-  return (<>
-    <h1>{count}</h1>
-    <ButtonMemo onClick={onClick}/>
-  </>)
-};
-
+import { ToDoList } from './sections/todo';
 
 function App() {
   const limit:number = 6;
@@ -34,7 +14,6 @@ function App() {
   const [serverData, setServerData] = useState<any>();
   const [page, setPage] = useState(startPage);
   const [searchState, setSearchState] = useState<string>("");
-  const [themeState, setThemeState] = useState<string>("");
 
   useEffect(()=>{
     const getData = async () => {
@@ -47,6 +26,8 @@ function App() {
 
   return (
     <ThemeProvider>
+      <ToDoList />
+      <hr />
       <ThemeButton />
       <div className="under_root">
         <Search />
