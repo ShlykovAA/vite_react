@@ -11,8 +11,8 @@ export const Timer = () => {
         setStarted(false);
     };
     const onReset = () => {
-        setSeconds(0);
         setStarted(false);
+        setSeconds(0);
     };
 
     useEffect(()=>{

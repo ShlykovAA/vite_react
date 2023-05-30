@@ -1,15 +1,14 @@
-import React from 'react';
-import { ControlAge } from './sections/control';
 import './App.css'
-import { Timer } from './sections/timer';
+import { Table } from './sections/table';
+import { Tabs } from './sections/tabs';
 
 
 
 function App() {
   return (
     <>
-      <ControlAge />
-      <Timer />
+      <Tabs />
+      <Table />
     </>
   )
 }
