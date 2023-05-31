@@ -1,4 +1,6 @@
 import './App.css'
+import { AgeProvider } from './providers/age';
+import { ContextTabs } from './sections/context-tabs';
 import { Table } from './sections/table';
 import { Tabs } from './sections/tabs';
 
@@ -7,8 +9,11 @@ import { Tabs } from './sections/tabs';
 function App() {
   return (
     <>
-      <Tabs />
-      <Table />
+      <AgeProvider>
+        <Tabs />
+        <Table />
+        <ContextTabs />
+      </AgeProvider>
     </>
   )
 }
