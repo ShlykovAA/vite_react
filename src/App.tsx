@@ -1,21 +1,10 @@
 import './App.css'
-import { AgeProvider } from './providers/age';
-import { ContextTabs } from './sections/context-tabs';
-import { Forms } from './sections/forms';
-import { Table } from './sections/table';
-import { Tabs } from './sections/tabs';
-
-
+import { FormHomeWork } from './sections/form-homework';
 
 function App() {
   return (
     <>
-      <AgeProvider>
-        <Forms />
-        <Tabs />
-        <Table />
-        <ContextTabs />
-      </AgeProvider>
+      <FormHomeWork />
     </>
   )
 }
