@@ -1,10 +1,10 @@
 import './App.css'
-import { FormHomeWork } from './sections/form-homework';
+import { BlurForms } from './sections/forms'
 
 function App() {
   return (
     <>
-      <FormHomeWork />
+      <BlurForms />
     </>
   )
 }

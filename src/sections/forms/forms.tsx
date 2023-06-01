@@ -1,4 +1,45 @@
-import React from "react";
+import React, { FormEvent, FocusEvent } from "react";
+
+// my version
+// export const BlurForms = () => {
+//     const [loginValid, setLoginValid] = React.useState(true)
+//     return (
+//         <form>
+//             <input type="text" name="Login" onBlur={(event)=>{
+//                 const target: any = event.target;
+//                 const inputValid = target.value.length > 3;
+//                 setLoginValid(inputValid)
+//             }}/>
+//             { !loginValid ? (
+//                 <p>Error: Login is too short</p>
+//             ) : (
+//                 null
+//             )}
+//             <button type="submit" disabled={!loginValid}>Submit form</button>
+//         </form>
+//     )
+// }
+
+// class version
+
+export const BlurForms = () => {
+    const [error, setError] = React.useState(false)
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        console.log("Submit")
+    };
+    const onBlur = (e: FocusEvent<HTMLInputElement, Element>) => {
+        setError(e.target.value.length < 3) 
+    };
+    const onClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {}
+    return (
+        <form onSubmit={onSubmit}>
+            <input type="text" name="name" onBlur={onBlur} />
+            { error && <p>Text is too short</p>}
+            <button type="submit" disabled={error} onClick={onClick}>Submit Form</button>
+        </form>
+    )
+}
 
 export const Forms = () => {
     const [formValues, setFormValues] = React.useState({firstName: '', lastName: ''})
