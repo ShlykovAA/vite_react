@@ -3,6 +3,7 @@ import { TabsLesson, ITabConfig } from "../../components/tabs-lesson/tabs-lesson
 import { ControlAge } from "../control"
 import { Timer } from "../timer"
 import { AgeContext } from "../../providers/age"
+import { RenderProps } from "../../components/render-props"
 
 interface IContextData {
     children: React.ReactNode;
@@ -30,6 +31,9 @@ const tabsConfig: ITabConfig[] = [
         </ContextData>
     )},
     {id: "3", title: "Empty", content: <p>There is a empty</p>},
+    {id: "4", title: "Render Props", content: (
+        <RenderProps />
+    )},
 ]
 
 export const ContextTabs = () => {
