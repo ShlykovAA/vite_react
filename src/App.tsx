@@ -1,12 +1,10 @@
 import './App.css'
-import { ContextTabs } from './sections/context-tabs'
-import { FormikForm } from './sections/formik'
+import { FormikHomeWork } from './sections/formik-homework'
 
 function App() {
   return (
     <>
-      <FormikForm />
-      <ContextTabs />
+      <FormikHomeWork />
     </>
   )
 }
