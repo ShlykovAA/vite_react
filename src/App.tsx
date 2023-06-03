@@ -1,11 +1,11 @@
 import './App.css'
 import { ContextTabs } from './sections/context-tabs'
-import { BlurForms } from './sections/forms'
+import { FormikForm } from './sections/formik'
 
 function App() {
   return (
     <>
-      <BlurForms />
+      <FormikForm />
       <ContextTabs />
     </>
   )
