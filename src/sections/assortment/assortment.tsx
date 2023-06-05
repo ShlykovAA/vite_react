@@ -1,9 +1,9 @@
 import { Product, IProduct } from "../../components/product";
-import styles from "./assortment.module.scss"
 import sourdoughLoaf from "/1.jpg";
 import baguette from "/rr.jpg";
 import farmersLoaf from "/gh.jpg";
 import roundBread from "/trrt.jpg"
+import styles from "./assortment.module.scss"
 
 
 const config: IProduct[] = [
@@ -22,19 +22,19 @@ const config: IProduct[] = [
         title: "Farmers Loaf",
         description: "Slow-fermented sourdough Rye studded with Kalamata.",
         price: 5.50,
-        revers: true,
     }, {
         src: roundBread,
         title: "Round Bread",
         description: "Made with 100% whole grain flour and high in fiber.",
         price: 5.15,
-        revers: true,
     }];
+
+
 
 export const Assortment = () => {
     return (
         <div className={styles.main_bread_div}>
-            {config.map((item)=> (<Product {...item}/>))}
+            {/* {config.map((item)=> (<Product {...item}/>))} */}
         </div>
     )
 };

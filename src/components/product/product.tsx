@@ -1,32 +1,40 @@
-import { FC } from "react";
-import styles from "./product.module.scss"
+import { FC, useEffect, useState } from "react";
+import styles from "./product.module.scss";
+import { Image } from "../image";
+import { ProductDescription } from "../product-description";
 
 export interface IProduct {
     src: string;
     title: string;
     description: string;
     price: number;
-    revers?: boolean;
 }
 
-export const Product: FC<IProduct> = ({src, title, description, price, revers}) => {
-    let element:string;
-    if (revers) {
-        element = styles.card_revers;
-    } else {
-        element = "";
-    }
+export const Product: FC<IProduct> = ({title, description, src, price}) => {
+    // let random = (Math.floor(Math.random() * 100 + 1));
+    // const [id, setId] = useState<string>(random.toString());
+    // const [userState, setUserState] = useState<any>();
+
+    // useEffect(()=>{
+    //     const getUser = async () => {
+    //         const user = await fetch(`https://dummyjson.com/products/${id}`);
+    //         const data = await user.json();
+    //         setUserState(data);
+    //     }
+    //     getUser();
+    // },[]);
+
     return (
-        <div className={`${styles.bread_card} ${element}`}>
+        <div className={styles.bread_card}>
             <div className={styles.control}>
-                <img src={src} className={styles.bread_img}/>
+                <Image src={src} className={styles.bread_img}/>
             </div>
             <div className={styles.control}>
-                <div className={styles.bread_info}>
+                <ProductDescription>
                     <h4 className={styles.bread_title}>{title}</h4>
                     <p>{description}</p>
                     <h5 className={styles.bread_price}>$ {price}</h5>
-                </div>
+                </ProductDescription>
             </div>
         </div>
     );
