@@ -1,10 +1,10 @@
 import './App.css'
-import { FormHomeWork } from './sections/form-homework';
+import { FormikHomeWork } from './sections/formik-homework'
 
 function App() {
   return (
     <>
-      <FormHomeWork />
+      <FormikHomeWork />
     </>
   )
 }
