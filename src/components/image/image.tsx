@@ -1,7 +1,7 @@
 import React from "react";
 
 interface IImage {
-    src: string;
+    src: string | undefined;
     alt?: string;
     className?: string;
 }

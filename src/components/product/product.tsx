@@ -1,31 +1,31 @@
-import { FC, useEffect, useState } from "react";
+import React, { FC, ReactNode} from "react";
 import styles from "./product.module.scss";
 import { Image } from "../image";
 import { ProductDescription } from "../product-description";
+import {lessonThemeContext} from "../../providers/theme-provider"
+
 
 export interface IProduct {
     src: string;
     title: string;
     description: string;
     price: number;
+    unique?: boolean;
+    children?: ReactNode;
 }
 
-export const Product: FC<IProduct> = ({title, description, src, price}) => {
-    // let random = (Math.floor(Math.random() * 100 + 1));
-    // const [id, setId] = useState<string>(random.toString());
-    // const [userState, setUserState] = useState<any>();
+export interface IProductItem {
+    title: string;
+    description: string;
+    price: number;
+    thumbnail?: string;
+    id: number;
+}
 
-    // useEffect(()=>{
-    //     const getUser = async () => {
-    //         const user = await fetch(`https://dummyjson.com/products/${id}`);
-    //         const data = await user.json();
-    //         setUserState(data);
-    //     }
-    //     getUser();
-    // },[]);
-
+export const Product: FC<Partial<IProduct>> = ({children, description, price, src, title}) => {
+    const x = React.useContext(lessonThemeContext)
     return (
-        <div className={styles.bread_card}>
+        <div className={`${styles.bread_card} ${styles[x.theme]}`}>
             <div className={styles.control}>
                 <Image src={src} className={styles.bread_img}/>
             </div>

@@ -4,6 +4,9 @@
 }
 
 .control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 300px;
     height: 300px;
 }
@@ -42,4 +45,14 @@ p {
     font-size: 1rem;
     word-wrap: break-word;
     margin: 0;
+}
+
+.light {
+    background-color: #00d9ff;
+    color: black;
+}
+
+.dark {
+    background-color: brown;
+    color: white;
 }
