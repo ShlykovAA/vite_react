@@ -1,14 +1,10 @@
 import './App.css'
-import { Table } from './sections/table';
-import { Tabs } from './sections/tabs';
-
-
+import { FormHomeWork } from './sections/form-homework';
 
 function App() {
   return (
     <>
-      <Tabs />
-      <Table />
+      <FormHomeWork />
     </>
   )
 }
