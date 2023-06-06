@@ -1,1 +1,0 @@
-export { TabsSwitch } from "./switch"
