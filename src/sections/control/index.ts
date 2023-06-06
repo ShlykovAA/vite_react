@@ -1,1 +1,0 @@
-export {ControlAge} from "./control"
