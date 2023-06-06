@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { FormItem } from "../../components/FormItem";
 
 interface IFormValues {
     firstName: string;
@@ -36,11 +37,9 @@ export const FormikForm = () => {
                 // console.log("Rest",rest);
                 return (
                     <Form>
-                        <label>
-                            First Name:
+                        <FormItem name="firstName" label="First Name:">
                             <Field name="firstName" type="text" />
-                            <ErrorMessage component="div" name="firstName" />
-                        </label>
+                        </FormItem>
                         <br />
                         <label>
                             University:
