@@ -1,10 +1,10 @@
-import { Form } from './sections/form';
+import { FormHomeWork } from './sections/useForm-HomeWork'
 import './App.css'
 
 function App() {
   return (
     <>
-      <Form />
+      <FormHomeWork />
     </>
   )
 }
