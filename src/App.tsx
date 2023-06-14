@@ -4,7 +4,7 @@ import { Home } from "./pages-HomeWork/Home";
 import './App.css';
 
 const octokit = new Octokit({
-  auth: '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'
+  auth: 'my_key'
 })
 
 export const usersData = await octokit.rest.users.list({per_page: 10});
