@@ -1,44 +1,22 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link, RouteProps, Redirect } from "react-router-dom"
-import { Home } from "./pages/home";
-import { Profile } from "./pages/profile";
-import { Users } from "./pages/users";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { Octokit } from "octokit";
+import { Home } from "./pages-HomeWork/Home";
 import './App.css';
-import { set } from "react-hook-form";
 
-interface IProtectedRoute extends RouteProps {
-  admin: boolean;
-}
+const octokit = new Octokit({
+  auth: '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'
+})
 
-const ProtectedRoute = ({children, admin, ...rest }: IProtectedRoute) => {
-  return (
-    <Route
-      {...rest}
-      render={({ history, location, match }) => {
-        return admin ? <>{children}</> : <Redirect to='/' />;
-      }}
-    />
-  )
-}
+export const usersData = await octokit.rest.users.list({per_page: 10});
 
 function App() {
-  const [admin, setAdmin] = React.useState(false)
   return (
     <Router>
       <div className="App">
-        <button onClick={() => {setAdmin(!admin)}}>Admin: {`${admin}`}</button>
+        <Link to="/"><h2>Home</h2></Link>
         <Switch>
-          <ProtectedRoute path="/profile" exact={true} admin={admin} >
-            <Profile />
-          </ProtectedRoute>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/" exact={true}>
-            <Home />
-          </Route>
-          <Route path="*">
-            <h1>404</h1>
+          <Route path="/" >
+            <Home data={usersData.data} />
           </Route>
         </Switch>
       </div>
