@@ -11,6 +11,7 @@ export const TodoList = () => {
 
     const onAdd = () => {
         dispatch(addTodo({id: uniqid(), completed: false, content: todo }))
+        setTodo("")
     }
 
     const onDelete = (id: string) => () => {
