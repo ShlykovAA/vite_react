@@ -1,26 +1,17 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
-import { Octokit } from "octokit";
-import { Home } from "./pages-HomeWork/Home";
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import { TodoList } from './components/todo-list';
+import { ThemeChanger } from './components/theme-changer/theme-changer';
 import './App.css';
-
-const octokit = new Octokit({
-  auth: 'my_key'
-})
-
-export const usersData = await octokit.rest.users.list({per_page: 10});
 
 function App() {
   return (
-    <Router>
+    <Provider store={store}>
       <div className="App">
-        <Link to="/"><h2>Home</h2></Link>
-        <Switch>
-          <Route path="/" >
-            <Home data={usersData.data} />
-          </Route>
-        </Switch>
+        <ThemeChanger />
+        <TodoList />
       </div>
-    </Router>
+    </Provider>
   )
 }
 
