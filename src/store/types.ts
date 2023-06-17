@@ -3,12 +3,13 @@ export interface IAction<T> {
     payload: T;
 }
 
-interface ITodoItem {
-    id: number;
-    
+export interface ITodoItem {
+    id: string;
+    content: string;
+    completed: boolean;
 }
 
 export interface IStore {
-    todo: string[];
+    todo: ITodoItem[];
     theme: "dark" | "light";
 }
