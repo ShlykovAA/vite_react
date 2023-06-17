@@ -1,48 +1,17 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link, RouteProps, Redirect } from "react-router-dom"
-import { Home } from "./pages/home";
-import { Profile } from "./pages/profile";
-import { Users } from "./pages/users";
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import { TodoList } from './components/todo-list';
+import { ThemeChanger } from './components/theme-changer/theme-changer';
 import './App.css';
-import { set } from "react-hook-form";
-
-interface IProtectedRoute extends RouteProps {
-  admin: boolean;
-}
-
-const ProtectedRoute = ({children, admin, ...rest }: IProtectedRoute) => {
-  return (
-    <Route
-      {...rest}
-      render={({ history, location, match }) => {
-        return admin ? <>{children}</> : <Redirect to='/' />;
-      }}
-    />
-  )
-}
 
 function App() {
-  const [admin, setAdmin] = React.useState(false)
   return (
-    <Router>
+    <Provider store={store}>
       <div className="App">
-        <button onClick={() => {setAdmin(!admin)}}>Admin: {`${admin}`}</button>
-        <Switch>
-          <ProtectedRoute path="/profile" exact={true} admin={admin} >
-            <Profile />
-          </ProtectedRoute>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/" exact={true}>
-            <Home />
-          </Route>
-          <Route path="*">
-            <h1>404</h1>
-          </Route>
-        </Switch>
+        <ThemeChanger />
+        <TodoList />
       </div>
-    </Router>
+    </Provider>
   )
 }
 
