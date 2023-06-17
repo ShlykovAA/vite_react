@@ -9,7 +9,14 @@ export interface ITodoItem {
     completed: boolean;
 }
 
+export interface IProducts {
+    loading: boolean;
+    data: null | unknown;
+    error: null | string;
+}
+
 export interface IStore {
     todo: ITodoItem[];
     theme: "dark" | "light";
+    products: IProducts;
 }
