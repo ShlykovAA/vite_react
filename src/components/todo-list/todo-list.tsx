@@ -1,13 +1,12 @@
 import React, { ChangeEvent } from "react";
 import uniqid from "uniqid";
-import { useTodoSelector } from "../../store/selectors/todoSelectors"
-import { useDispatch } from "react-redux";
-import { addTodo, deleteTodo, updateTodo } from "../../store/action/action";
+import { useTodoSelector, addTodo, deleteTodo, updateTodo } from "../../store/slice/todo"
+import { useAppDispatch } from "../../store/hooks";
 
 export const TodoList = () => {
     const [todo, setTodo] = React.useState("");
     const todoList = useTodoSelector();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const onAdd = () => {
         dispatch(addTodo({id: uniqid(), completed: false, content: todo }))
@@ -19,7 +18,7 @@ export const TodoList = () => {
     }
 
     const onUpdate = (id: string) => (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(updateTodo(id, e.target.checked));
+        dispatch(updateTodo({ id , completed: e.target.checked}));
     }
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -1,13 +1,12 @@
-import { useDispatch } from "react-redux";
-import { useThemeSelector } from "../../store/selectors/themeSelectors"
-import { changeAction } from "../../store/action/themeActions";
+import { useAppDispatch } from "../../store/hooks";
+import { useThemeSelector, changeTheme } from "../../store/slice/theme"
 
 export const ThemeChanger = () => {
     const theme = useThemeSelector();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const onClick = () => {
-        dispatch(changeAction(theme === "dark" ? "light" : "dark"))
+        dispatch(changeTheme(theme === "dark" ? "light" : "dark"))
     }
 
     return (
