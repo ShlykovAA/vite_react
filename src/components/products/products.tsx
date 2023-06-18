@@ -1,19 +1,23 @@
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
-import { fetchProducts } from "../../store/action/productsAction";
-import { useProductsSelector } from "../../store/selectors/productsSelector";
+import { fetchProducts, fetchProduct } from "../../store/reducers/productReducer";
+import { useProductsSelector, useProductSelector } from "../../store/selectors/productsSelector";
+import { useAppDispatch } from "../../store/hooks";
 
 export const Products = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const products = useProductsSelector();
+    const product = useProductSelector();
 
     useEffect(() => {
-        dispatch(fetchProducts() as any)
+        dispatch(fetchProducts())
+        dispatch(fetchProduct(1))
     }, [dispatch])
 
     console.log(products)
 
     return (
-        <p>Products</p>
+        <div>
+            <h1>Products</h1>
+        </div>
     )
 }

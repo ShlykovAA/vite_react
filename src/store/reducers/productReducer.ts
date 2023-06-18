@@ -1,44 +1,52 @@
-import { PRODUCTS_LOADING, PRODUCTS_SUCCESS, PRODUCTS_ERROR } from "../action/productsAction"
-import { IStore, IAction } from "../types";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { IStore } from "../types";
 
 const initialState: IStore["products"] = {
-    loading: false,
-    data: null,
-    error: null,
+    products: { loading: false, data: null, error: null, },
+    product: { loading: false, data: null, error: null, },
 }
 
-const productsLoading = (state: IStore["products"]): IStore["products"]  => ({...state, loading: true})
-
-const productsLoadSuccessful = (
-    state: IStore["products"],
-    action: IAction<unknown>
-): IStore["products"] => ({
-    ...state,
-    loading: false,
-    data: action.payload
+export const fetchProducts = createAsyncThunk("products/fetch", async () => {
+    const resp = await fetch('https://dummyjson.com/products');
+    const data = await resp.json();
+    return data;
 })
 
-const productsLoadFailed = (
-    state: IStore["products"],
-    action: IAction<string>
-): IStore["products"] => ({
-    ...state,
-    loading: false,
-    error: action.payload,
+export const fetchProduct = createAsyncThunk<any, number>("product/fetch", async (id) => {
+    const resp = await fetch(`https://dummyjson.com/products/${id}`);
+    const data = await resp.json();
+    return data;
 })
 
-export const productReducer = (
-    state: IStore["products"] = initialState,
-    action: IAction<any>
-) => {
-    switch(action.type) {
-        case PRODUCTS_LOADING:
-            return productsLoading(state)
-        case PRODUCTS_SUCCESS:
-            return productsLoadSuccessful(state, action)
-        case PRODUCTS_ERROR:
-            return productsLoadFailed(state, action)
-        default:
-            return state;
-    }
-}
+const productsSlice = createSlice({
+    name: "products",
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchProducts.pending, (state) => {
+                state.products.loading = true
+            })
+            .addCase(fetchProducts.fulfilled, (state, action) => {
+                state.products.loading = false;
+                state.products.data = action.payload;
+            })
+            .addCase(fetchProducts.rejected, (state, action) => {
+                state.products.loading = false;
+                state.products.error = action.error;
+            })
+            .addCase(fetchProduct.pending, (state) => {
+                state.product.loading = true
+            })
+            .addCase(fetchProduct.fulfilled, (state, action) => {
+                state.product.loading = false;
+                state.product.data = action.payload;
+            })
+            .addCase(fetchProduct.rejected, (state, action) => {
+                state.product.loading = false;
+                state.product.error = action.error;
+            })
+    },
+});
+
+export const productReducer = productsSlice.reducer;

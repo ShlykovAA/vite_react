@@ -1,6 +1,9 @@
-import { useSelector } from "react-redux"
-import { IStore } from "../types"
+import { useAppSelector } from "../hooks";
 
 export const useProductsSelector = () => {
-    return useSelector((state: IStore) => state.products);
+    return useAppSelector((state) => state.products.products);
+}
+
+export const useProductSelector = () => {
+    return useAppSelector((state) => state.products.product);
 }
