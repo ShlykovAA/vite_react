@@ -1,18 +1,15 @@
-import { combineReducers, compose, createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk"
-import { todoReducer } from "./reducers/todoReducer";
 import { themeReducer } from "./reducers/themeReducer";
-import { productReducer } from "./reducers/productReducer";
+import { configureStore } from "@reduxjs/toolkit";
+import { todoReducer } from "./reducers/todoReducer";
 
-const rootReducer = combineReducers({
-    todo: todoReducer,
-    theme: themeReducer,
-    products: productReducer,
- });
+export const store = configureStore({
+    reducer: {
+        todo: todoReducer,
+        theme: themeReducer,
+        // products: productReducer,
+    }
+})
 
-const composeEnhancer = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export type RootState = ReturnType<typeof store.getState>;
 
-export const store = createStore(
-    rootReducer,
-    composeEnhancer(applyMiddleware(thunk))
-)
+export type AppDispatch = typeof store.dispatch;

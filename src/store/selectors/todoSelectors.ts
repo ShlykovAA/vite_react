@@ -1,7 +1,6 @@
-import { useSelector } from "react-redux";
-import { IStore } from "../types";
+import { useAppSelector } from "../hooks";
 
 export const useTodoSelector = () => {
-    const todo = useSelector((state: IStore) => state.todo);
+    const todo = useAppSelector((state) => state.todo);
     return todo;
 }

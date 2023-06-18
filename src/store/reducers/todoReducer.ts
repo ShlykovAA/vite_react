@@ -1,19 +1,28 @@
-import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from "../action/action";
-import { IStore, IAction } from "../types";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IStore, IAction, ITodoItem } from "../types";
 
-export const todoReducer = (state: IStore["todo"] = [], action: IAction<any>) => {
-    switch (action.type) {
-        case ADD_TODO: 
+const initialState: IStore["todo"] = []
+
+const todoSlice = createSlice({
+    name: "todo",
+    initialState,
+    reducers: {
+        addTodo: (state, action: PayloadAction<ITodoItem>) => {
             return [ ...state, action.payload ];
-        case DELETE_TODO:
+        },
+        deleteTodo: (state, action: PayloadAction<string>) => {
             return state.filter((todo) => todo.id !== action.payload)
-        case UPDATE_TODO:
+        },
+        updateTodo: (state, action: PayloadAction<{ id: string, completed: boolean}>) => {
             return state.map((todo) => {
                 return todo.id === action.payload.id 
                 ? {...todo, completed: action.payload.completed} 
                 : todo
             })
-        default:
-            return state;
-    }   
-};
+        },
+    }
+})
+
+export const { addTodo, deleteTodo, updateTodo } = todoSlice.actions;
+
+export const todoReducer = todoSlice.reducer;

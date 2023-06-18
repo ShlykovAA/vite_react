@@ -1,6 +1,5 @@
-import { useSelector } from "react-redux"
-import { IStore } from "../types"
+import { useAppSelector } from "../hooks"
 
 export const useThemeSelector = () => {
-    return useSelector((state: IStore) => state.theme);
+    return useAppSelector((state) => state.theme);
 }
