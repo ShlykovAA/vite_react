@@ -1,17 +1,14 @@
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
-import { Home } from './pages/home';
-import { storeHomeWork } from './store-HomeWork/store';
+import { store } from './store/store';
 
 function App() {
   return (
     <Router>
-      <Provider store={storeHomeWork}>
+      <Provider store={store}>
         <div className="App">
-          <Switch>
-            <Route path='/' component={() => <Home />}/>
-          </Switch>
+
         </div>
       </Provider>
     </Router>
