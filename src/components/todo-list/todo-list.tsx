@@ -1,7 +1,6 @@
 import React, { ChangeEvent } from "react";
 import uniqid from "uniqid";
-import { useTodoSelector } from "../../store/selectors/todoSelectors"
-import { addTodo, deleteTodo, updateTodo } from "../../store/reducers/todoReducer";
+import { useTodoSelector, addTodo, deleteTodo, updateTodo } from "../../store/slice/todo"
 import { useAppDispatch } from "../../store/hooks";
 
 export const TodoList = () => {

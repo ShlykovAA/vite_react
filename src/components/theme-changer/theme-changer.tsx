@@ -1,6 +1,5 @@
 import { useAppDispatch } from "../../store/hooks";
-import { useThemeSelector } from "../../store/selectors/themeSelectors"
-import { changeTheme } from "../../store/reducers/themeReducer";
+import { useThemeSelector, changeTheme } from "../../store/slice/theme"
 
 export const ThemeChanger = () => {
     const theme = useThemeSelector();
