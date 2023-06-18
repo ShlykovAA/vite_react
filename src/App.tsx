@@ -1,19 +1,20 @@
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './App.css';
-import { ThemeChanger } from './components/theme-changer/theme-changer';
-import { TodoList } from './components/todo-list';
-import { store } from './store/store';
-import { Products } from './components/products';
+import { Home } from './pages/home';
+import { storeHomeWork } from './store-HomeWork/store';
 
 function App() {
   return (
-    <Provider store={store}>
-      <div className="App">
-        <Products />
-        <ThemeChanger />
-        <TodoList />
-      </div>
-    </Provider>
+    <Router>
+      <Provider store={storeHomeWork}>
+        <div className="App">
+          <Switch>
+            <Route path='/' component={() => <Home />}/>
+          </Switch>
+        </div>
+      </Provider>
+    </Router>
   )
 }
 
