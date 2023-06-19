@@ -1,17 +1,16 @@
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
 import { store } from './store/store';
+import { Routes } from './routes/routes';
 
 function App() {
+  console.log(import.meta.env)
   return (
-    <Router>
+    <div className="App">
       <Provider store={store}>
-        <div className="App">
-
-        </div>
+        <Routes />
       </Provider>
-    </Router>
+    </div>
   )
 }
 
