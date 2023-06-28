@@ -1,26 +1,28 @@
-import { ReactNode } from "react";
-import { ROUTES } from "../../routes/const"
-import { NavLink } from "react-router-dom";
+import React from "react";
+import { ROUTES } from "../../routes/const";
+import { NavLink, Outlet } from "react-router-dom";
 import styles from "./layout.module.scss"
 
-interface ILayout {
-    children: ReactNode;
-}
 
-export const Layout: React.FC<ILayout> = ({ children }) => {
-    const routesConfig = Object.values(ROUTES);
+export const Layout: React.FC = () => {
+    const routesConfig = Object.entries(ROUTES);
     return (
-        <div>
-            <div>
-                { routesConfig.map(([key, value]) => {
+        <>
+            <header className={styles.layout}>
+                { routesConfig.map(([key, value], index) => {
                     return key === "user" ? null : (
-                        <NavLink to={value} key={key}>
-                            {key.toUpperCase()}
-                        </NavLink>
+                        <>
+                            <NavLink to={value} key={key}>
+                                {key.toUpperCase()}
+                            </NavLink>
+                            { index < routesConfig.length - 1 ? (
+                                <span className={styles.divider}></span>
+                            ) : null }
+                        </>
                     );
                 })}
-            </div>
-            {children}
-        </div>
+            </header>
+            <Outlet />
+        </>
     )
 }

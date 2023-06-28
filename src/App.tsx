@@ -4,7 +4,7 @@ import { store } from './store/store';
 import { Routes } from './routes/routes';
 
 function App() {
-  console.log(import.meta.env)
+  console.log(import.meta.env.VITE_ACCESS_TOKEN)
   return (
     <div className="App">
       <Provider store={store}>
