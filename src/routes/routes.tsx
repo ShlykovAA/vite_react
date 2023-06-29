@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ROUTES } from "./const";
 import { Home } from "../pages/Home";
 import { Layout } from "../components/layout";
+import { Login } from "../pages/Login";
 
 const myRouter = createBrowserRouter([
     {
@@ -13,7 +14,7 @@ const myRouter = createBrowserRouter([
             },
             {
                 path: ROUTES.login,
-                element: <div>Hello World login!</div>,
+                element: <Login />,
             },
             {
                 path: ROUTES.user,
