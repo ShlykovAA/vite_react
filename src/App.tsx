@@ -1,20 +1,20 @@
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { store } from './store/store';
+import { Routes } from './routes/routes';
+import { Octokit } from "octokit";
 import './App.css';
-import { Home } from './pages/home';
-import { storeHomeWork } from './store-HomeWork/store';
+
+export const octokit = new Octokit({
+  auth: import.meta.env.VITE_ACCESS_TOKEN,
+})
 
 function App() {
   return (
-    <Router>
-      <Provider store={storeHomeWork}>
-        <div className="App">
-          <Switch>
-            <Route path='/' component={() => <Home />}/>
-          </Switch>
-        </div>
+    <div className="App">
+      <Provider store={store}>
+        <Routes />
       </Provider>
-    </Router>
+    </div>
   )
 }
 

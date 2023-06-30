@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  margin-bottom: 8px;
+}
+
+.error_msg {
+  height: 24px;
+  color: red;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.input {
+  width: 250px;
+}
