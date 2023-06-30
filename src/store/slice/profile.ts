@@ -10,16 +10,10 @@ const initialState: IStore["profile"] = {
 };
 
 export const fetchUserProfile = createAsyncThunk<any, string>(
-  "productsList/fetch",
+  "profile/fetch",
   async (username) => {
     const resp = await octokit.request(`GET /users/${username}`);
-    console.log(resp);
-    
-    // if (!resp.ok) {
-    //   throw "Error";
-    // }
-    // return data;
-    return "daa"
+    return resp.data;
   }
 );
 
@@ -34,11 +28,13 @@ const profileSlice = createSlice({
       })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload;
+        state.data = { ...action.payload };
+        state.error = null;
       })
-      .addCase(fetchUserProfile.rejected, (state, action) => {
+      .addCase(fetchUserProfile.rejected, (state) => {
         state.loading = false;
-        state.error = action.error;
+        state.data = null;
+        state.error = "Login failed";
       })
   },
 });

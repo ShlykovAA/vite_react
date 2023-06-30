@@ -9,7 +9,6 @@ export const octokit = new Octokit({
 })
 
 function App() {
-  console.log(import.meta.env.VITE_ACCESS_TOKEN)
   return (
     <div className="App">
       <Provider store={store}>

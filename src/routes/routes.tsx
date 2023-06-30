@@ -3,6 +3,7 @@ import { ROUTES } from "./const";
 import { Home } from "../pages/Home";
 import { Layout } from "../components/layout";
 import { Login } from "../pages/Login";
+import { ProtectedRoute } from "./protected-route";
 
 const myRouter = createBrowserRouter([
     {
@@ -18,11 +19,19 @@ const myRouter = createBrowserRouter([
             },
             {
                 path: ROUTES.user,
-                element: <div>Hello World user!</div>,
+                element: (
+                    <ProtectedRoute>
+                        <div>Hello World user!</div>
+                    </ProtectedRoute>
+                ),
             },
             {
                 path: ROUTES.userList,
-                element: <div>Hello World userList!</div>,
+                element: (
+                    <ProtectedRoute>
+                        <div>Hello World userList!</div>,
+                    </ProtectedRoute>
+                ),
             },
         ]
     },

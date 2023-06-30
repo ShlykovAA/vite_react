@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { profileReducer } from "./slice/profile";
 
-// створити стор
 export const store = configureStore({
   reducer: {
     profile: profileReducer,

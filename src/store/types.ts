@@ -5,7 +5,7 @@ export interface ILoadable<T, Y> {
 }
 
 export interface IStore {
-  profile: ILoadable<any,any>;
-  userList: ILoadable<any,any>;
-  user: ILoadable<any,any>;
+  profile: ILoadable<any,string>;
+  userList: ILoadable<any,string>;
+  user: ILoadable<any,string>;
 }
